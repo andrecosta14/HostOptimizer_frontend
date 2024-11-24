@@ -1,0 +1,45 @@
+/* Navbar styling */
+.nav {
+  background: #375030;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navItem {
+  margin: 0 15px;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navLink:hover,
+.logoutButton:hover{
+  color: #07243d; /* Highlight color on hover */
+}
+
+.activeLink {
+  color: #ffcc00; /* Highlight color for the active link */
+}
+
+.logoutButton {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
