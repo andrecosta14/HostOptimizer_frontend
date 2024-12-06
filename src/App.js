@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Configuracao from './components/Configuracao';
 import Avaliacao from './components/Avaliacao';
+import Register from './components/Register'; // Import Register component
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
@@ -26,6 +27,11 @@ const App = () => {
         <Route
           path="/login"
           element={!isLoggedIn ? <Login onLogin={handleLogin} /> : <Navigate to="/" />}
+        />
+        {/* Register route */}
+        <Route
+          path="/register"
+          element={!isLoggedIn ? <Register /> : <Navigate to="/" />}
         />
         {/* Protected routes */}
         <Route

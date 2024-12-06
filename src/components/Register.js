@@ -2,29 +2,35 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Login = ({ onLogin }) => {
+const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [age, setAge] = useState('');
+  const [role, setRole] = useState('user'); // Default role is 'user'
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
 
     try {
-      // LOCAL
-      const response = await axios.post('http://localhost:3000/api/v1/login', {
-      // REMOTE SERVER
+      const response = await axios.post('http://localhost:3000/api/v1/users', {
+        name,
         email,
         password,
+        age,
+        role,
       });
 
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('userId', response.data.user.userId);
-      setSuccess('Login successful!');
-      onLogin(); // Notify parent component about login
+      setSuccess('Registration successful! You can now log in.');
+      setName('');
+      setEmail('');
+      setPassword('');
+      setAge('');
+      setRole('user');
     } catch (err) {
       setError(
         err.response?.data?.message || 'An error occurred. Please try again.'
@@ -34,9 +40,18 @@ const Login = ({ onLogin }) => {
 
   return (
     <div style={styles.container}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin} style={styles.form}>
-        {/* Input fields */}
+      <h2>Register</h2>
+      <form onSubmit={handleRegister} style={styles.form}>
+        <div style={styles.inputGroup}>
+          <label>Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            style={styles.input}
+            required
+          />
+        </div>
         <div style={styles.inputGroup}>
           <label>Email:</label>
           <input
@@ -47,7 +62,7 @@ const Login = ({ onLogin }) => {
             required
           />
         </div>
-        <div style={styles.inputGroup} >
+        <div style={styles.inputGroup}>
           <label>Password:</label>
           <input
             type="password"
@@ -57,13 +72,35 @@ const Login = ({ onLogin }) => {
             required
           />
         </div>
-        <div style={{paddingTop: '20px', width: '100%'}}>
-        <button type="submit" style={styles.button}>
-          Login
-        </button>
+        <div style={styles.inputGroup}>
+          <label>Age:</label>
+          <input
+            type="number"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            style={styles.input}
+            required
+          />
+        </div>
+        <div style={styles.inputGroup}>
+          <label>Role:</label>
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            style={styles.inputSelect}
+            required
+          >
+            <option value="user">User</option>
+            <option value="sommelier">Sommelier</option>
+          </select>
+        </div>
+        <div style={{ paddingTop: '20px', width: '100%' }}>
+          <button type="submit" style={styles.button}>
+            Register
+          </button>
         </div>
         <p style={styles.linkText}>
-          Don't have an account? <Link to="/register">Register here</Link>
+          Already have an account? <Link to="/login">Login here</Link>
         </p>
       </form>
       {error && <p style={styles.error}>{error}</p>}
@@ -72,12 +109,7 @@ const Login = ({ onLogin }) => {
   );
 };
 
-
 const styles = {
-  linkText: {
-    color: '#295095',
-    textDecoration: 'none',
-  },
   container: {
     maxWidth: '400px',
     margin: '50px auto',
@@ -96,6 +128,13 @@ const styles = {
   },
   input: {
     width: '95%',
+    padding: '10px',
+    marginTop: '5px',
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+  },
+  inputSelect: {
+    width: '100%',
     padding: '10px',
     marginTop: '5px',
     border: '1px solid #ddd',
@@ -121,4 +160,4 @@ const styles = {
   },
 };
 
-export default Login;
+export default Register;

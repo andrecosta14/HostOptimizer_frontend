@@ -1,5 +1,12 @@
+import React from 'react';
+import ConfiguracaoForm from './ConfiguracaoForm';
+
 const Configuracao = () => {
-  return <p>Novidades em breve...</p>;
+  return (
+    <div>
+      <ConfiguracaoForm />
+    </div>
+  );
 };
 
 export default Configuracao;
