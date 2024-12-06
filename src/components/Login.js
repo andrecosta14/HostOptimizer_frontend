@@ -17,6 +17,7 @@ const Login = ({ onLogin }) => {
       // LOCAL
       const response = await axios.post('http://localhost:3000/api/v1/login', {
       // REMOTE SERVER
+        // const response = await axios.post('https://hostoptimizer-front.onrender.com/api/v1/login', {
         email,
         password,
       });
