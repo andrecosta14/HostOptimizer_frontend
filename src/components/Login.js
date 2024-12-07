@@ -35,11 +35,11 @@ const Login = ({ onLogin }) => {
 
   return (
     <div style={styles.container}>
-      <h2>Login</h2>
+      <h1 style={{ marginBottom: "50px" }}><b>HostOptimizer</b></h1>
       <form onSubmit={handleLogin} style={styles.form}>
         {/* Input fields */}
-        <div style={styles.inputGroup}>
-          <label>Email:</label>
+        <div style={{ ...styles.inputGroup, marginBottom: "40px" }}>
+          <label>Email</label>
           <input
             type="email"
             value={email}
@@ -49,7 +49,7 @@ const Login = ({ onLogin }) => {
           />
         </div>
         <div style={styles.inputGroup} >
-          <label>Password:</label>
+          <label>Password</label>
           <input
             type="password"
             value={password}
@@ -58,13 +58,13 @@ const Login = ({ onLogin }) => {
             required
           />
         </div>
-        <div style={{paddingTop: '20px', width: '100%'}}>
+        <div style={{paddingTop: '20px', paddingBottom: '20px', width: '100%'}}>
         <button type="submit" style={styles.button}>
-          Login
+          LOGIN
         </button>
         </div>
         <p style={styles.linkText}>
-          Don't have an account? <Link to="/register">Register here</Link>
+          Don't have an account? <Link to="/register"><b>Register here</b></Link>
         </p>
       </form>
       {error && <p style={styles.error}>{error}</p>}
@@ -83,7 +83,7 @@ const styles = {
     maxWidth: '400px',
     margin: '50px auto',
     padding: '20px',
-    border: '1px solid #ddd',
+    border: '1px solid #375030',
     borderRadius: '8px',
     textAlign: 'center',
   },
@@ -99,13 +99,13 @@ const styles = {
     width: '95%',
     padding: '10px',
     marginTop: '5px',
-    border: '1px solid #ddd',
+    border: '1px solid #375030',
     borderRadius: '4px',
   },
   button: {
     width: '100%',
     padding: '15px 15px',
-    backgroundColor: '#007bff',
+    backgroundColor: '#375030',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
