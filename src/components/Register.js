@@ -40,10 +40,10 @@ const Register = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Register</h2>
+      <h1 style={{ marginBottom: "30px" }}><b>REGISTER</b></h1>
       <form onSubmit={handleRegister} style={styles.form}>
-        <div style={styles.inputGroup}>
-          <label>Name:</label>
+        <div style={{ ...styles.inputGroup, marginBottom: "20px" }}>
+          <label>Name</label>
           <input
             type="text"
             value={name}
@@ -52,8 +52,8 @@ const Register = () => {
             required
           />
         </div>
-        <div style={styles.inputGroup}>
-          <label>Email:</label>
+        <div style={{ ...styles.inputGroup, marginBottom: "20px" }}>
+          <label>Email</label>
           <input
             type="email"
             value={email}
@@ -62,8 +62,8 @@ const Register = () => {
             required
           />
         </div>
-        <div style={styles.inputGroup}>
-          <label>Password:</label>
+        <div style={{ ...styles.inputGroup, marginBottom: "20px" }}>
+          <label>Password</label>
           <input
             type="password"
             value={password}
@@ -72,8 +72,8 @@ const Register = () => {
             required
           />
         </div>
-        <div style={styles.inputGroup}>
-          <label>Age:</label>
+        <div style={{ ...styles.inputGroup, marginBottom: "20px" }}>
+          <label>Age</label>
           <input
             type="number"
             value={age}
@@ -82,8 +82,8 @@ const Register = () => {
             required
           />
         </div>
-        <div style={styles.inputGroup}>
-          <label>Role:</label>
+        <div style={{ ...styles.inputGroup, marginBottom: "20px" }}>
+          <label>Role</label>
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
@@ -91,16 +91,16 @@ const Register = () => {
             required
           >
             <option value="user">User</option>
-            <option value="sommelier">Sommelier</option>
+            <option value="proprietario">Owner</option>
           </select>
         </div>
-        <div style={{ paddingTop: '20px', width: '100%' }}>
+        <div style={{paddingTop: '20px', paddingBottom: '20px', width: '100%'}}>
           <button type="submit" style={styles.button}>
-            Register
+            REGISTER
           </button>
         </div>
         <p style={styles.linkText}>
-          Already have an account? <Link to="/login">Login here</Link>
+          Already have an account? <Link to="/login"><b>Login here</b></Link>
         </p>
       </form>
       {error && <p style={styles.error}>{error}</p>}
@@ -114,7 +114,7 @@ const styles = {
     maxWidth: '400px',
     margin: '50px auto',
     padding: '20px',
-    border: '1px solid #ddd',
+    border: '1px solid #375030',
     borderRadius: '8px',
     textAlign: 'center',
   },
@@ -130,20 +130,20 @@ const styles = {
     width: '95%',
     padding: '10px',
     marginTop: '5px',
-    border: '1px solid #ddd',
+    border: '1px solid #375030',
     borderRadius: '4px',
   },
   inputSelect: {
     width: '100%',
     padding: '10px',
     marginTop: '5px',
-    border: '1px solid #ddd',
+    border: '1px solid #375030',
     borderRadius: '4px',
   },
   button: {
     width: '100%',
     padding: '15px 15px',
-    backgroundColor: '#007bff',
+    backgroundColor: '#375030',
     color: '#fff',
     border: 'none',
     borderRadius: '4px',
