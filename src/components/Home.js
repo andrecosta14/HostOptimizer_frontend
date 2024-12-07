@@ -1,8 +1,8 @@
 const Home = () => {
   return (
     <div style={styles.container}>
-      <h1>Bem-vindo ao HostOptimizer!</h1>
-      <p>Novidades em breve...</p>
+      <h1>Welcome to HostOptimizer!</h1>
+      <p>News coming soon...</p>
     </div>
   );
 };

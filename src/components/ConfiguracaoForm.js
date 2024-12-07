@@ -61,181 +61,133 @@ const ConfiguracaoForm = () => {
         gutterBottom
         sx={{ color: 'darkblue', marginBottom: 4 }}
       >
-        Criar Configuração de Degustação
+        Housing Details
       </Typography>
 
       <Card sx={{ width: '70%' }}>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={3}>
-              {/* Tipo de Prova */}
-              <Grid item xs={8}>
+              {/* Housing Name */}
+              <Grid item xs={12}>
                 <TextField
-                  label="Nome da Prova"
+                  label="Housing Name"
                   variant="filled"
                   fullWidth
-                  {...register('nomeProva', { required: 'Tipo de Prova é obrigatório' })}
-                  error={!!errors.nomeProva}
-                  helperText={errors.nomeProva?.message}
+                  {...register('nameHousing', { required: 'The housing name is mandatory' })}
+                  error={!!errors.nameHousing}
+                  helperText={errors.nameHousing?.message}
                 />
               </Grid>
-              {/* Tipo de Prova */}
-              <Grid item xs={4}>
+              {/* Housing Type */}
+              <Grid item xs={12}>
                 <TextField
-                  label="Tipo de Prova"
+                  label="Housing Type"
                   variant="filled"
                   fullWidth
-                  {...register('tipoProva', { required: 'Tipo de Prova é obrigatório' })}
-                  error={!!errors.tipoProva}
-                  helperText={errors.tipoProva?.message}
+                  {...register('typeHousing', { required: 'The housing type is mandatory' })}
+                  error={!!errors.typeHousing}
+                  helperText={errors.typeHousing?.message}
                 />
               </Grid>
 
-              {/* Peso Aroma, Cor, Sabor, Corpo */}
+              {/* Location */}
+              <Grid item xs={12}>
+                <TextField
+                    label="Location"
+                    variant="filled"
+                    fullWidth
+                    {...register('location', { required: 'Location is mandatory' })}
+                    error={!!errors.location}
+                    helperText={errors.location?.message}
+                />
+              </Grid>
+
+              {/* Characteristics */}
               <Grid container item spacing={3}>
                 <Grid item xs={3}>
                   <TextField
-                    label="Peso Aroma"
+                    label="Rooms"
                     type="number"
                     variant="filled"
                     fullWidth
-                    {...register('pesoAroma', { required: 'Peso Aroma é obrigatório' })}
-                    error={!!errors.pesoAroma}
-                    helperText={errors.pesoAroma?.message}
+                    {...register('nRooms', { required: 'The number of rooms is mandatory' })}
+                    error={!!errors.nRooms}
+                    helperText={errors.nRooms?.message}
                   />
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
-                    label="Peso Cor"
+                    label="Bedrooms"
                     type="number"
                     variant="filled"
                     fullWidth
-                    {...register('pesoCor', { required: 'Peso Cor é obrigatório' })}
-                    error={!!errors.pesoCor}
-                    helperText={errors.pesoCor?.message}
+                    {...register('nBedrooms', { required: 'The number of bedrooms is mandatory' })}
+                    error={!!errors.nBedrooms}
+                    helperText={errors.nBedrooms?.message}
                   />
                 </Grid>
                 <Grid item xs={3}>
                   <TextField
-                    label="Peso Sabor"
+                    label="WC"
                     type="number"
                     variant="filled"
                     fullWidth
-                    {...register('pesoSabor', { required: 'Peso Sabor é obrigatório' })}
-                    error={!!errors.pesoSabor}
-                    helperText={errors.pesoSabor?.message}
+                    {...register('nWC', { required: 'Peso Sabor é obrigatório' })}
+                    error={!!errors.nWC}
+                    helperText={errors.nWC?.message}
                   />
                 </Grid>
                 <Grid item xs={3}>
-                  <TextField
-                    label="Peso Corpo"
-                    type="number"
-                    variant="filled"
-                    fullWidth
-                    {...register('pesoCorpo', { required: 'Peso Corpo é obrigatório' })}
-                    error={!!errors.pesoCorpo}
-                    helperText={errors.pesoCorpo?.message}
-                  />
                 </Grid>
               </Grid>
 
-              {/* Peso Persistência, Número de Participantes */}
-              <Grid container item spacing={3}>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Peso Persistência"
-                    type="number"
-                    variant="filled"
-                    fullWidth
-                    {...register('pesoPersistencia', { required: 'Peso Persistência é obrigatório' })}
-                    error={!!errors.pesoPersistencia}
-                    helperText={errors.pesoPersistencia?.message}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label="Número de Participantes"
-                    type="number"
-                    variant="filled"
-                    fullWidth
-                    {...register('numeroParticipantes', { required: 'Número de Participantes é obrigatório' })}
-                    error={!!errors.numeroParticipantes}
-                    helperText={errors.numeroParticipantes?.message}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <FormControlLabel
-                    control={<Checkbox {...register('guiasDegustacao')} />}
-                    label="Guias de Degustação"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox {...register('dicasTemperatura')} />}
-                    label="Dicas de Temperatura"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox {...register('sugestoesAcompanhamento')} />}
-                    label="Sugestões de Acompanhamento"
-                  />
-                </Grid>
-              </Grid>
-
-              {/* Nível de Apreciação */}
+              {/* Evaluation Metrics */}
               <Grid item xs={12}>
                 <TextField
-                  label="Nível de Apreciação"
+                  label="Cleaning"
+                  type="number"
                   variant="filled"
                   fullWidth
-                  {...register('nivelApreciacao', { required: 'Nível de Apreciação é obrigatório' })}
-                  error={!!errors.nivelApreciacao}
-                  helperText={errors.nivelApreciacao?.message}
+                  {...register('eCleaning', { required: 'Cleanliness level is mandatory' })}
+                  error={!!errors.eCleaning}
+                  helperText={errors.eCleaning?.message}
                 />
               </Grid>
 
-              {/* Tipos de Vinho */}
               <Grid item xs={12}>
                 <TextField
-                  label="Tipo do Vinho"
+                  label="Comfort"
+                  type="number"
                   variant="filled"
                   fullWidth
-                  {...register('tipoVinho', { required: 'Tipos de Vinho são obrigatórios' })}
-                  error={!!errors.tipoVinho}
-                  helperText={errors.tipoVinho?.message}
+                  {...register('eComfort', { required: 'Comfort level is mandatory' })}
+                  error={!!errors.eComfort}
+                  helperText={errors.eComfort?.message}
                 />
               </Grid>
 
-              {/* Métodos de Degustação */}
               <Grid item xs={12}>
                 <TextField
-                  label="Métodos de Degustação"
+                  label="Service"
+                  type="number"
                   variant="filled"
                   fullWidth
-                  {...register('metodosDegustacao', { required: 'Métodos de Degustação são obrigatórios' })}
-                  error={!!errors.metodosDegustacao}
-                  helperText={errors.metodosDegustacao?.message}
+                  {...register('eService', { required: 'The level of service is mandatory' })}
+                  error={!!errors.eService}
+                  helperText={errors.eService?.message}
                 />
               </Grid>
 
-              {/* Duração da Prova */}
               <Grid item xs={12}>
                 <TextField
-                  label="Duração da Prova"
+                  label="Additional Services"
+                  type="number"
                   variant="filled"
                   fullWidth
-                  {...register('duracaoProva', { required: 'Duração da Prova é obrigatória' })}
-                  error={!!errors.duracaoProva}
-                  helperText={errors.duracaoProva?.message}
-                />
-              </Grid>
-
-              {/* Localização */}
-              <Grid item xs={12}>
-                <TextField
-                  label="Localização"
-                  variant="filled"
-                  fullWidth
-                  {...register('localizacao', { required: 'Localização é obrigatória' })}
-                  error={!!errors.localizacao}
-                  helperText={errors.localizacao?.message}
+                  {...register('eAddservices', { required: 'Duração da Prova é obrigatória' })}
+                  error={!!errors.eAddservices}
+                  helperText={errors.eAddservices?.message}
                 />
               </Grid>
 
@@ -248,7 +200,7 @@ const ConfiguracaoForm = () => {
                   fullWidth
                   disabled={Object.keys(errors).length > 0}
                 >
-                  Criar Configuração
+                  Create Housing
                 </Button>
               </Grid>
             </Grid>

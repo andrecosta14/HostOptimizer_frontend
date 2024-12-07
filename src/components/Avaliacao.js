@@ -66,9 +66,9 @@ const AvaliacaoDialog = ({ open, onClose, configuracaoId }) => {
                 label="Peso Aroma"
                 type="number"
                 fullWidth
-                {...register("pesoAroma", { required: "Peso Aroma é obrigatório" })}
-                error={!!errors.pesoAroma}
-                helperText={errors.pesoAroma?.message}
+                {...register("nRooms", { required: "Peso Aroma é obrigatório" })}
+                error={!!errors.nRooms}
+                helperText={errors.nRooms?.message}
               />
             </Grid>
             <Grid item xs={12}>
@@ -76,9 +76,9 @@ const AvaliacaoDialog = ({ open, onClose, configuracaoId }) => {
                 label="Peso Cor"
                 type="number"
                 fullWidth
-                {...register("pesoCor", { required: "Peso Cor é obrigatório" })}
-                error={!!errors.pesoCor}
-                helperText={errors.pesoCor?.message}
+                {...register("nBedrooms", { required: "Peso Cor é obrigatório" })}
+                error={!!errors.nBedrooms}
+                helperText={errors.nBedrooms?.message}
               />
             </Grid>
             <Grid item xs={12}>
@@ -86,9 +86,9 @@ const AvaliacaoDialog = ({ open, onClose, configuracaoId }) => {
                 label="Peso Sabor"
                 type="number"
                 fullWidth
-                {...register("pesoSabor", { required: "Peso Sabor é obrigatório" })}
-                error={!!errors.pesoSabor}
-                helperText={errors.pesoSabor?.message}
+                {...register("nWC", { required: "Peso Sabor é obrigatório" })}
+                error={!!errors.nWC}
+                helperText={errors.nWC?.message}
               />
             </Grid>
             <Grid item xs={12}>
@@ -96,9 +96,9 @@ const AvaliacaoDialog = ({ open, onClose, configuracaoId }) => {
                 label="Peso Corpo"
                 type="number"
                 fullWidth
-                {...register("pesoCorpo", { required: "Peso Corpo é obrigatório" })}
-                error={!!errors.pesoCorpo}
-                helperText={errors.pesoCorpo?.message}
+                {...register("nBedroomspo", { required: "Peso Corpo é obrigatório" })}
+                error={!!errors.nBedroomspo}
+                helperText={errors.nBedroomspo?.message}
               />
             </Grid>
             <Grid item xs={12}>
@@ -161,7 +161,7 @@ const Avaliacao = () => {
         });
 
         const unfinishedConfiguracoes = response.data.filter((config) => {
-          return config.finalizado === "false" && !avaliacoesByTheUser.some(
+          return !avaliacoesByTheUser.some(
             (avaliacao) => avaliacao.configuracaoId === config._id
           );
         });
@@ -238,11 +238,11 @@ const Avaliacao = () => {
           <TableBody>
             {configuracoes.map((config) => (
               <TableRow key={config._id}>
-                <TableCell>{config.tipoProva}</TableCell>
-                <TableCell>{config.nivelApreciacao}</TableCell>
-                <TableCell>{config.tipoVinho}</TableCell>
-                <TableCell>{config.localizacao}</TableCell>
-                <TableCell>{config.duracaoProva}</TableCell>
+                <TableCell>{config.typeHousing}</TableCell>
+                <TableCell>{config.eCleaning}</TableCell>
+                <TableCell>{config.eComfort}</TableCell>
+                <TableCell>{config.location}</TableCell>
+                <TableCell>{config.eAddservices}</TableCell>
                 <TableCell>
                   <IconButton
                     color="primary"
