@@ -9,16 +9,14 @@
 .navList {
   display: flex;
   justify-content: center;
+  gap: 70px;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.navItem {
-  margin: 0 15px;
-}
-
 .navLink {
+  font-size: 16px;
   color: white;
   text-decoration: none;
   font-weight: bold;
@@ -28,6 +26,10 @@
 .navLink:hover,
 .logoutButton:hover{
   color: #07243d; /* Highlight color on hover */
+  background-color: white;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+  padding: 2px 2px;
 }
 
 .activeLink {
@@ -35,6 +37,7 @@
 }
 
 .logoutButton {
+  font-size: 16px;
   background: transparent;
   border: none;
   color: white;

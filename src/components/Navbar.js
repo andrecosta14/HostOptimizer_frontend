@@ -23,7 +23,7 @@ const Navbar = ({ onLogout }) => {
             className="navLink"
             activeClassName="activeLink" // Class that will be added when the link is active
           >
-            Home
+            HOME
           </NavLink>
         </li>
 
@@ -34,7 +34,7 @@ const Navbar = ({ onLogout }) => {
               className="navLink"
               activeClassName="activeLink" // Class that will be added when the link is active
             >
-              Housing
+              HOUSING
             </NavLink>
           </li>
         )}
@@ -45,13 +45,13 @@ const Navbar = ({ onLogout }) => {
             className="navLink"
             activeClassName="activeLink" // Class that will be added when the link is active
           >
-            Evaluation
+            HOUSING EVALUATION
           </NavLink>
         </li>
 
         <li className="navItem">
           <button onClick={onLogout} className="logoutButton">
-            Logout
+            LOGOUT
           </button>
         </li>
       </ul>
