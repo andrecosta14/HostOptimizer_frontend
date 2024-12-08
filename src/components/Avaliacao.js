@@ -303,16 +303,7 @@ const Avaliacao = () => {
                 open={dialogOpen}
                 onClose={handleCloseDialog}
                 configuracaoId={selectedConfiguracaoId}
-                fetchData={fetchData}
-                showParentAlert={showAlert}
             />
-            <CustomAlert
-                open={alert.open}
-                message={alert.message}
-                type={alert.type}
-                onClose={handleCloseAlert}
-            />
-
         </Box>
     );
 };
