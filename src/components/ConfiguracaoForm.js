@@ -59,9 +59,19 @@ const ConfiguracaoForm = () => {
         component="h1"
         align="center"
         gutterBottom
-        sx={{ color: 'darkblue', marginBottom: 4 }}
+        sx={{ color: 'black', fontWeight: 'bold', marginBottom: 4 }}
       >
         Housing Details
+      </Typography>
+
+      <Typography
+          variant="body1"
+          component="p"
+          align="center"
+          gutterBottom
+          sx={{ color: 'black', marginBottom: 4 }}
+      >
+        Specify your housing, as well as the desired evaluation metrics.
       </Typography>
 
       <Card sx={{ width: '70%' }}>
@@ -143,7 +153,7 @@ const ConfiguracaoForm = () => {
               </Grid>
 
               {/* Evaluation Metrics */}
-              <Grid item xs={12}>
+              <Grid item xs={3}>
                 <TextField
                   label="Cleaning"
                   type="number"
@@ -155,7 +165,7 @@ const ConfiguracaoForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={3}>
                 <TextField
                   label="Comfort"
                   type="number"
@@ -167,7 +177,7 @@ const ConfiguracaoForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={3}>
                 <TextField
                   label="Service"
                   type="number"
@@ -179,13 +189,13 @@ const ConfiguracaoForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid item xs={3}>
                 <TextField
                   label="Additional Services"
                   type="number"
                   variant="filled"
                   fullWidth
-                  {...register('eAddservices', { required: 'Duração da Prova é obrigatória' })}
+                  {...register('eAddservices', { required: 'The level of additional services is mandatory' })}
                   error={!!errors.eAddservices}
                   helperText={errors.eAddservices?.message}
                 />
@@ -194,11 +204,17 @@ const ConfiguracaoForm = () => {
               {/* Submit Button */}
               <Grid item xs={12}>
                 <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  fullWidth
-                  disabled={Object.keys(errors).length > 0}
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                    disabled={Object.keys(errors).length > 0}
+                    sx={{
+                      backgroundColor: '#375030', // Set custom button background color
+                      color: '#ffffff', // Set text color to white for better contrast
+                      '&:hover': {
+                        backgroundColor: '#2f4e1e', // Slightly darker green on hover
+                      },
+                    }}
                 >
                   Create Housing
                 </Button>
