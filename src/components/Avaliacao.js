@@ -224,6 +224,15 @@ const Avaliacao = () => {
         >
           Evaluations in Progress
         </Typography>
+        <Typography
+            variant="body1"
+            component="p"
+            align="center"
+            gutterBottom
+            sx={{ color: 'black', marginBottom: 4 }}
+        >
+          Share your stay experience with us to help ensure your feedback aligns with the owner's expectations and enhances future visits.
+        </Typography>
         <Table>
           <TableHead>
             <TableRow>
@@ -245,8 +254,13 @@ const Avaliacao = () => {
                 <TableCell>{config.eAddservices}</TableCell>
                 <TableCell>
                   <IconButton
-                    color="primary"
-                    onClick={() => handleAvaliarClick(config._id)}
+                      onClick={() => handleAvaliarClick(config._id)}
+                      sx={{
+                        color: '#375030', // Set the star icon button color
+                        '&:hover': {
+                          color: '#2f4e1e', // Slightly darker green on hover
+                        },
+                      }}
                   >
                     <StarIcon />
                   </IconButton>
