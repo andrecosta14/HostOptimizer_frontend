@@ -20,7 +20,7 @@ import {
   TextField,
   Grid,
 } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
+import HomeIcon from '@mui/icons-material/Home';
 import { useForm } from "react-hook-form";
 
 const AvaliacaoDialog = ({ open, onClose, configuracaoId }) => {
@@ -57,68 +57,86 @@ const AvaliacaoDialog = ({ open, onClose, configuracaoId }) => {
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle align={"center"} >Avaliar Prova</DialogTitle>
+      <DialogTitle align={"center"} sx={{ fontWeight: 'bold' }}>EVALUATE HOUSING</DialogTitle>
       <DialogContent >
+        <Typography align="center" sx={{ marginBottom: 2 }}>
+          We value your feedback!
+        </Typography>
+        <Typography align="center" sx={{ marginBottom: 2 }}>
+          Based on the criteria below, evaluate your stay, between 1 and 5, by selecting the score that best reflects your experience:
+        </Typography>
+        <Typography align="center" sx={{ marginBottom: 2 }}>
+          <strong>1 - Very Poor ; 2 - Poor ; 3 - Average ; 4 - Good ; 5 - Excellent</strong>
+        </Typography>
+        <Typography align="center" sx={{ marginBottom: 2 }}>
+          Your opinion helps us improve and ensures better experiences for all our guests.
+        </Typography>
+        <Typography align="center" sx={{ marginBottom: 2 }}>
+          Thank you for sharing your thoughts with us!
+        </Typography>
         <form onSubmit={handleSubmit(onSubmit)} >
           <Grid container spacing={3} paddingTop={2}>
             <Grid item xs={12}>
               <TextField
-                label="Peso Aroma"
+                label="Cleaning"
                 type="number"
                 fullWidth
-                {...register("nRooms", { required: "Peso Aroma é obrigatório" })}
-                error={!!errors.nRooms}
-                helperText={errors.nRooms?.message}
+                {...register("eCleaning", { required: "Cleanliness level is mandatory" })}
+                error={!!errors.eCleaning}
+                helperText={errors.eCleaning?.message}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label="Peso Cor"
+                label="Comfort"
                 type="number"
                 fullWidth
-                {...register("nBedrooms", { required: "Peso Cor é obrigatório" })}
-                error={!!errors.nBedrooms}
-                helperText={errors.nBedrooms?.message}
+                {...register("eComfort", { required: "Comfort level is mandatory" })}
+                error={!!errors.eComfort}
+                helperText={errors.eComfort?.message}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label="Peso Sabor"
+                label="Service"
                 type="number"
                 fullWidth
-                {...register("nWC", { required: "Peso Sabor é obrigatório" })}
-                error={!!errors.nWC}
-                helperText={errors.nWC?.message}
+                {...register("eService", { required: "The level of service is mandatory" })}
+                error={!!errors.eService}
+                helperText={errors.eService?.message}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label="Peso Corpo"
+                label="Additional Services"
                 type="number"
                 fullWidth
-                {...register("nBedroomspo", { required: "Peso Corpo é obrigatório" })}
-                error={!!errors.nBedroomspo}
-                helperText={errors.nBedroomspo?.message}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Peso Persistência"
-                type="number"
-                fullWidth
-                {...register("pesoPersistencia", { required: "Peso Persistência é obrigatório" })}
-                error={!!errors.pesoPersistencia}
-                helperText={errors.pesoPersistencia?.message}
+                {...register("eAddservices", { required: "The level of additional services is mandatory" })}
+                error={!!errors.eAddservices}
+                helperText={errors.eAddservices?.message}
               />
             </Grid>
           </Grid>
-          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
-            Enviar Avaliação
+          <Button
+              type="submit"
+              variant="contained"
+              fullWidth
+              disabled={Object.keys(errors).length > 0}
+              sx={{
+                backgroundColor: '#375030', // Set custom button background color
+                color: '#ffffff', // Set text color to white for better contrast
+                '&:hover': {
+                  backgroundColor: '#2f4e1e', // Slightly darker green on hover
+                },
+                mt: 2,
+              }}
+          >
+            Send Evaluation
           </Button>
         </form>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="secondary">Cancelar</Button>
+        <Button onClick={onClose} color="secondary">Cancel</Button>
       </DialogActions>
     </Dialog>
   );
@@ -236,22 +254,22 @@ const Avaliacao = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontWeight: "bold" }}>Housing Name</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Cleaning</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Comfort</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Service</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Additional Services</TableCell>
+              <TableCell sx={{ fontWeight: "bold", textAlign: 'center' }}>Housing Name</TableCell>
+              <TableCell sx={{ fontWeight: "bold", textAlign: 'center' }}>Cleaning</TableCell>
+              <TableCell sx={{ fontWeight: "bold", textAlign: 'center' }}>Comfort</TableCell>
+              <TableCell sx={{ fontWeight: "bold", textAlign: 'center' }}>Service</TableCell>
+              <TableCell sx={{ fontWeight: "bold", textAlign: 'center' }}>Additional Services</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>Evaluate</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {configuracoes.map((config) => (
               <TableRow key={config._id}>
-                <TableCell>{config.nameHousing}</TableCell>
-                <TableCell>{config.eCleaning}</TableCell>
-                <TableCell>{config.eComfort}</TableCell>
-                <TableCell>{config.eService}</TableCell>
-                <TableCell>{config.eAddservices}</TableCell>
+                <TableCell sx={{ textAlign: 'center' }}>{config.nameHousing}</TableCell>
+                <TableCell sx={{ textAlign: 'center' }}>{config.eCleaning}</TableCell>
+                <TableCell sx={{ textAlign: 'center' }}>{config.eComfort}</TableCell>
+                <TableCell sx={{ textAlign: 'center' }}>{config.eService}</TableCell>
+                <TableCell sx={{ textAlign: 'center' }}>{config.eAddservices}</TableCell>
                 <TableCell>
                   <IconButton
                       onClick={() => handleAvaliarClick(config._id)}
@@ -262,7 +280,7 @@ const Avaliacao = () => {
                         },
                       }}
                   >
-                    <StarIcon />
+                    <HomeIcon />
                   </IconButton>
                 </TableCell>
               </TableRow>
