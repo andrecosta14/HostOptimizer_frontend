@@ -121,7 +121,6 @@ const AvaliacaoDialog = ({ open, onClose, configuracaoId }) => {
               type="submit"
               variant="contained"
               fullWidth
-              disabled={Object.keys(errors).length > 0}
               sx={{
                 backgroundColor: '#375030', // Set custom button background color
                 color: '#ffffff', // Set text color to white for better contrast

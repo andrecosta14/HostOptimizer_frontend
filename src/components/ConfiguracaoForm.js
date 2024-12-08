@@ -71,7 +71,17 @@ const ConfiguracaoForm = () => {
           gutterBottom
           sx={{ color: 'black', marginBottom: 4 }}
       >
-        Specify your housing, as well as the desired evaluation metrics.
+        Specify your housing, as well as the desired evaluation metrics:
+      </Typography>
+
+      <Typography
+          variant="body1"
+          component="p"
+          align="center"
+          gutterBottom
+          sx={{ color: 'black', fontWeight: 'bold', marginBottom: 4 }}
+      >
+        1 - Very Poor ; 2 - Poor ; 3 - Average ; 4 - Good ; 5 - Excellent
       </Typography>
 
       <Card sx={{ width: '70%' }}>
