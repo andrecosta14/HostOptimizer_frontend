@@ -20,7 +20,6 @@ const styles = {
     padding: '20px',
     lineHeight: '1.6',
     fontFamily: 'Arial, sans-serif',
-    backgroundColor: '#f8f8f8',
     borderRadius: '8px',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     textAlign: 'center',
