@@ -220,28 +220,28 @@ const Avaliacao = () => {
           variant="h4"
           align="center"
           gutterBottom
-          sx={{ fontWeight: "bold", color: "darkblue", marginBottom: 3 }}
+          sx={{ color: 'black', fontWeight: 'bold', marginBottom: 3 }}
         >
-          Avaliações a Decorrer
+          Evaluations in Progress
         </Typography>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontWeight: "bold" }}>Tipo Prova</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Nível Apreciação</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Tipo Vinho</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Localização</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Duração Prova</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Avaliar</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Housing Name</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Cleaning</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Comfort</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Service</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Additional Services</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>Evaluate</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {configuracoes.map((config) => (
               <TableRow key={config._id}>
-                <TableCell>{config.typeHousing}</TableCell>
+                <TableCell>{config.nameHousing}</TableCell>
                 <TableCell>{config.eCleaning}</TableCell>
                 <TableCell>{config.eComfort}</TableCell>
-                <TableCell>{config.location}</TableCell>
+                <TableCell>{config.eService}</TableCell>
                 <TableCell>{config.eAddservices}</TableCell>
                 <TableCell>
                   <IconButton
