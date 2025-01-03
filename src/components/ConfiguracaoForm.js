@@ -1,52 +1,96 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { TextField, Checkbox, FormControlLabel, Button, Grid, Card, CardContent, Typography, Box } from '@mui/material';
+import CustomAlert from "./CustomAlert";
+
+// Observer Pattern: AlertSubject and AlertObserver
+class AlertSubject {
+  constructor() {
+    this.observers = [];
+  }
+
+  subscribe(observer) {
+    this.observers.push(observer);
+  }
+
+  unsubscribe(observer) {
+    this.observers = this.observers.filter(obs => obs !== observer);
+  }
+
+  notify(data) {
+    this.observers.forEach(observer => observer.update(data));
+  }
+}
+
+class AlertObserver {
+  constructor(updateCallback) {
+    this.update = updateCallback;
+  }
+}
+
+const alertSubject = new AlertSubject();
 
 const ConfiguracaoForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [alert, setAlert] = useState({ open: false, message: "", type: "" });
+
+  const showAlert = (message, type) => {
+    alertSubject.notify({ open: true, message, type });
+  };
+
+  useEffect(() => {
+    const alertObserver = new AlertObserver((data) => {
+      setAlert(data);
+    });
+
+    alertSubject.subscribe(alertObserver);
+
+    // Cleanup on unmount
+    return () => alertSubject.unsubscribe(alertObserver);
+  }, []);
+
+  const handleCloseAlert = () => {
+    setAlert({ ...alert, open: false });
+  };
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      // Retrieve token from localStorage
       const token = localStorage.getItem('token');
 
-      // Ensure the user is authenticated
       if (!token) {
-        alert('Usuário não está autenticado.');
+        showAlert('User não está autenticado.', "error");
         return;
       }
 
       console.log('Sending data:', data);
-
-      // Send data without userId (let backend handle userId from token)
-      // LOCAL SERVER
-      //const response = await fetch('http://localhost:3000/api/v1/configuracao', {
-      // REMOTE SERVER
       const response = await fetch('https://hostoptimizer.onrender.com/api/v1/configuracao', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-           authorization: `Bearer ${token}`, // Token in Authorization header
+          authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(data), // No userId here, it will be added by the backend
+        body: JSON.stringify(data),
       });
 
       if (!response.ok) {
-        // Log error details
         const errorDetails = response.headers.get('Content-Type')?.includes('application/json')
-          ? await response.json()
-          : await response.text();
+            ? await response.json()
+            : await response.text();
         console.error('API Error:', response.status, errorDetails);
-        alert(`Error: ${response.status} - ${errorDetails}`);
+        showAlert(`Error: ${response.status} - ${errorDetails}`, "error");
         return;
       }
 
       const result = await response.json();
       console.log('API Response:', result);
-      alert('Configuração criada com sucesso!');
+      showAlert('Configuração criada com sucesso!', "success");
+
+      // Reset the form after successful submission
+      reset();
     } catch (error) {
       console.error('Fetch error:', error);
-      alert('Ocorreu um erro ao criar a configuração.');
+      showAlert('Ocorreu um erro ao criar a configuração.', 'error');
     }
   };
 
@@ -236,6 +280,12 @@ const ConfiguracaoForm = () => {
           </form>
         </CardContent>
       </Card>
+      <CustomAlert
+          open={alert.open}
+          message={alert.message}
+          type={alert.type}
+          onClose={handleCloseAlert}
+      />
     </Box>
   );
 };
