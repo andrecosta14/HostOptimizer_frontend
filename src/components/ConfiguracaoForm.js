@@ -64,7 +64,7 @@ const ConfiguracaoForm = () => {
       }
 
       console.log('Sending data:', data);
-      const response = await fetch('https://hostoptimizer.onrender.com/api/v1/configuracao', {
+      const response = await fetch('https://hostoptimizer.onrender.com/api/v1/deploy-atividade', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
