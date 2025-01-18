@@ -107,6 +107,7 @@ const Avaliacao = () => {
         const onSubmit = async (data) => {
             try {
                 const token = localStorage.getItem("token");
+                const userId = localStorage.getItem("userId");
                 if (!token) {
                     showParentAlert("User não autenticado.", "error");
                     return;
@@ -120,7 +121,7 @@ const Avaliacao = () => {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                    body: JSON.stringify({ ...data, configuracaoId }),
+                    body: JSON.stringify({ ...data, configuracaoId, userId }),
                 });
 
                 if (!response.ok) {
