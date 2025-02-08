@@ -17,10 +17,7 @@ const Register = () => {
     setSuccess('');
 
     try {
-      // LOCAL SERVER
-      //const response = await axios.post('http://localhost:3000/api/v1/users', {
-      // REMOTE SERVER
-      const response = await axios.post('https://hostoptimizer.onrender.com/api/v1/users', {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/users`, {
         name,
         email,
         password,
